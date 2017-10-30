@@ -5,6 +5,7 @@ import re
 import codecs
 from bs4 import BeautifulSoup
 from openpyxl import Workbook
+#excel库
 wb = Workbook()
 dest_filename = '电影.xlsx'
 ws1 = wb.active
@@ -23,6 +24,7 @@ def download_page(url):
 
 
 def get_li(doc):
+    """解析页面内容"""
     soup = BeautifulSoup(doc, 'html.parser')
     ol = soup.find('ol', class_='grid_view')
     name = []  # 名字
@@ -77,6 +79,6 @@ def main():
         ws1[col_D] = p
     wb.save(filename=dest_filename)
 
-
+# 判断程序执行入口
 if __name__ == '__main__':
     main()
